@@ -16,11 +16,11 @@ jobs:
       - name: Set up Theos
         uses: Randomblock1/theos-action@v1
         with:
-          theos-dir: theos
+          theos-dir: theos-ci          # ← changed so it doesn’t conflict
 
       - name: Build rootless (iOS 17 compatible)
         run: |
-          export THEOS=$GITHUB_WORKSPACE/theos
+          export THEOS=$GITHUB_WORKSPACE/theos-ci
           make clean
           make package THEOS_PACKAGE_SCHEME=rootless FINALPACKAGE=1 -j$(sysctl -n hw.ncpu)
 
