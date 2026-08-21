@@ -1,0 +1,20 @@
+TWEAK_NAME = DataLogoSwitcher
+DataLogoSwitcher_FILES = Tweak.x
+DataLogoSwitcher_CFLAGS = -fobjc-arc
+DataLogoSwitcher_FRAMEWORKS = Foundation UIKit
+FINALPACKAGE = 1
+
+# iOS 17.0–17.3.1 only needs arm64/arm64e (no armv7)
+# Deployment target 15.0+ is required for rootless; 17.0 works cleanly on the requested range
+ifeq ($(THEOS_PACKAGE_SCHEME),rootless)
+	ARCHS = arm64 arm64e
+	TARGET = iphone:clang:latest:15.0
+else
+	ARCHS = arm64 arm64e
+	TARGET = iphone:clang:latest:15.0
+endif
+
+SUBPROJECTS += DataLogoSwitcherSettings
+
+include $(THEOS)/makefiles/common.mk
+include $(THEOS_MAKE_PATH)/tweak.​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
